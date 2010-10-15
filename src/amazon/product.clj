@@ -57,7 +57,7 @@
 (defn get-amazon-url
 	"Create an encoded and signed URL request compliant with the Amazon Product API"
 	[domain access-key secret assoc-tag params]
-	(let [	uri (map-to-uri (conj params {:AWSAccessKeyId access-key, :AssociateTag assoc-tag, :Timestamp (get-timestamp)}))
+	(let [	uri (map-to-uri (conj params {:Service "AWSECommerceService", :AWSAccessKeyId access-key, :AssociateTag assoc-tag, :Timestamp (get-timestamp)}))
 			signature (encode-signature (sign (str "GET\n" domain "\n/onca/xml\n" uri) secret))]
 		(str "http://" domain "/onca/xml?" uri "&Signature=" signature)))
 		

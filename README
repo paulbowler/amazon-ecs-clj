@@ -8,7 +8,9 @@ See: http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/index.html?
 
 ## Usage
 
-get-amazon-url <domain> <access-key> <secret-key> <associate-id> {optional parameter map}
+get-amazon-url <domain> <access-key> <secret-key> <associate-id> {parameter map}
+
+See tests for more examples.
 
 ## Installation
 

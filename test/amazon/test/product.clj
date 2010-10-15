@@ -11,16 +11,16 @@
 
 		(testing "Simple item lookup"
 			(let [	result (client/get (get-amazon-url domain access-key secret-key associate-id
-					{:Service "AWSECommerceService", :Operation "ItemLookup", :ItemId "0679722769"}))]
+					{:Operation "ItemLookup", :ItemId "0679722769"}))]
 				(is	(= 200 (:status result)))))
 
 		(testing "Book title search"
 			(let [	result (client/get (get-amazon-url domain access-key secret-key associate-id
-					{:Service "AWSECommerceService", :Operation "ItemSearch", :SearchIndex "Books" :Title "Moab is my washpot"}))]
+					{:Operation "ItemSearch", :SearchIndex "Books" :Title "Moab is my washpot"}))]
 				(is	(= 200 (:status result)))))
 
 		(testing "Book title and author search"
 			(let [	result (client/get (get-amazon-url domain access-key secret-key associate-id
-					{:Service "AWSECommerceService", :Operation "ItemSearch", :ResponseGroup "Small,Images,Similarities",
+					{:Operation "ItemSearch", :ResponseGroup "Small,Images,Similarities",
 						:SearchIndex "Books" :Title "Moab is my washpot", :Author "Stephen Fry"}))]
 				(is	(= 200 (:status result))))))) 
