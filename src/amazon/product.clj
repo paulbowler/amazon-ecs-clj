@@ -14,12 +14,20 @@
 (defn- encodeRfc3986
 	"Manually encodes a string to be RFC3986 compliant"
 	[value]
-	(.replace (.replace (.replace (.replace (.replace (URLEncoder/encode value) "+" "%20") "*" "%2A") "~" "%7E") "," "%2C") ":" "%3A"))
+	(-> value
+		(URLEncoder/encode)
+		(.replace "+" "%20")
+		(.replace "*" "%2A")
+		(.replace "~" "%7E")
+		(.replace "," "%2C")
+		(.replace":" "%3A")))
 	
 (defn- encode-signature
 	"Change the signature to encode plus and equal signs"
 	[value]
-	(.replace (.replace value "+" "%2B") "=" "%3D"))
+	(-> value
+		(.replace "+" "%2B")
+		(.replace "=" "%3D")))
 
 (defn- map-to-uri
 	"Tranform map to encoded URI string"
