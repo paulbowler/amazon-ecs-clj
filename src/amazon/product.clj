@@ -20,7 +20,7 @@
 		(.replace "*" "%2A")
 		(.replace "~" "%7E")
 		(.replace "," "%2C")
-		(.replace":" "%3A")))
+		(.replace ":" "%3A")))
 	
 (defn- encode-signature
 	"Change the signature to encode plus and equal signs"
@@ -42,16 +42,6 @@
 			void (.setTimeZone dfm (TimeZone/getTimeZone  "GMT"))]
 		(.format dfm (.getTime cal))))
 
-(defn- compose-map
-	"Add the access key and associate tag into the map"
-	[uri-map access-key assoc-tag]
-	(conj uri-map {:AWSAccessKeyId access-key, :AssociateTag assoc-tag, :Timestamp (get-timestamp)}))
-
-(defn- uri-wrapper
-	"Add the required HTTP tokens for colculating the request signature"
-	[domain uri]
-	(str "GET\n" domain "\n/onca/xml\n" uri))
-
 (defn- sign
 	"Create the signature for the full query string"
 	[string-to-sign secret]
@@ -67,8 +57,8 @@
 (defn get-amazon-url
 	"Create an encoded and signed URL request compliant with the Amazon Product API"
 	[domain access-key secret assoc-tag params]
-	(let [	uri (map-to-uri (compose-map params access-key assoc-tag))
-			signature (encode-signature (sign (uri-wrapper domain uri) secret))]
+	(let [	uri (map-to-uri (conj params {:AWSAccessKeyId access-key, :AssociateTag assoc-tag, :Timestamp (get-timestamp)}))
+			signature (encode-signature (sign (str "GET\n" domain "\n/onca/xml\n" uri) secret))]
 		(str "http://" domain "/onca/xml?" uri "&Signature=" signature)))
 		
 		
