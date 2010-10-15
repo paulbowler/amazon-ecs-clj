@@ -23,4 +23,4 @@
 			(let [	result (client/get (get-amazon-url domain access-key secret-key associate-id
 								{:Service "AWSECommerceService", :Operation "ItemSearch", :ResponseGroup "Small,Images,Similarities",
 									:SearchIndex "Books" :Title "Moab is my washpot", :Author "Stephen Fry"}))]
-				(is	(= 200 (:status result)))))))
+				(is	(= 200 (:status result))))))) 
