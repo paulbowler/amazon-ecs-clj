@@ -1,17 +1,22 @@
-# amazon
+# amazon.product
 
-FIXME: write description
+Clojure function to create correctly formatted and signed HTTP requests for use with Amazon Product API (formerly ECS)
+See: http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/ for API
+
+Solution based on Amazon Java example
+See: http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/index.html?AuthJavaSampleSig2.html
 
 ## Usage
 
-FIXME: write
+get-amazon-url <domain> <access-key> <secret-key> <associate-id> {optional parameter map}
 
 ## Installation
 
-FIXME: write
+Download and then add the following to your ns declaration: 
+	(:use [amazon.product])	
 
 ## License
 
-Copyright (C) 2010 FIXME
+Copyright (C) 2010 Paul Bowler
 
 Distributed under the Eclipse Public License, the same as Clojure.
