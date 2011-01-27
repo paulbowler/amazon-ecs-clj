@@ -5,9 +5,9 @@
 
 (deftest get-amazon-url-test
 	(let [	domain "ecs.amazonaws.com"
-			access-key "1HWX1AM5RYHK7ZYTBZ82"
-			secret-key "MQ+RXlRIMaGGwLUjHO18C9lqH6ZeFz4oSlMus25Z"
-			associate-id "quote8-21"]
+			access-key "enter-your-amazon-access-key"
+			secret-key "enter-your-amazon-secret-key"
+			associate-id "enter-your-amazon-associate-key"]
 
 		(testing "Simple item lookup"
 			(let [	result (client/get (get-amazon-url domain access-key secret-key associate-id
